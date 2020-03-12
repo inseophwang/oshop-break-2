@@ -1,5 +1,10 @@
-if (document.getElementById('plus')) {
-  document.getElementById('plus').addEventListener('click', event => {
+const docPlus = document.getElementById('plus')
+const docMinus = document.getElementById('minus')
+
+
+
+if (docPlus) {
+  docPlus.addEventListener('click', event => {
     event.preventDefault();
 
     let priceValue = parseFloat(document.getElementById('priceValue').value);
@@ -14,8 +19,8 @@ if (document.getElementById('plus')) {
   });
 }
 
-if (document.getElementById('minus')) {
-  document.getElementById('minus').addEventListener('click', event => {
+if (docMinus) {
+  docMinus.addEventListener('click', event => {
     event.preventDefault();
 
     let priceValue = parseFloat(document.getElementById('priceValue').value);

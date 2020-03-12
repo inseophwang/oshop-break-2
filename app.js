@@ -11,12 +11,13 @@ const passport = require('passport');
 const methodOverride = require('method-override');
 require('./lib/passport');
 
+const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users/userRoutes');
 const adminRouter = require('./routes/admin/adminRoutes');
 const productRouter = require('./routes/admin/products/productRouter');
 const cartRouter = require('./routes/cart/cartRoutes');
 
-const getAllCategories = require('./route/admin/middleware/getAllCategories');
+const getAllCategories = require('./routes/admin/middleware/getAllCategories');
 const cartTotal = require('./routes/cart/middleware/cartTotal');
 const app = express();
 require('dotenv').config();

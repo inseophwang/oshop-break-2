@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const userController = require('./controllers/userController')
 
 const User = require('../users/models/User');
 require('../../lib/passport');
@@ -47,7 +48,7 @@ router.get('/register', (req, res) => {
   res.render('auth/register', { errors: req.flash('errors') });
 });
 
-router.post('/register', userValidation, register, createUserCart);
+router.post('/register', userValidation, userController.register, createUserCart);
 
 router.get('/login', (req, res) => {
   return res.render('auth/login', { errors: req.flash('errors') });

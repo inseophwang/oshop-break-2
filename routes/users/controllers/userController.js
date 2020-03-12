@@ -16,10 +16,15 @@ module.exports = {
         return res.send('User Exists');
       } else {
         const newUser = new User();
-        newUser.profile.name = name;
+        
+        const salt = bcrypt.genSaltSync(10)
+        const hash = bcrypt.hashSync(req.body.password, salt)
+
+
+        newUser.profile.name = name
         newUser.profile.picture = faker.image.avatar();
         newUser.email = email;
-        newUser.password = password;
+        newUser.password = hash;
 
         newUser
           .save()
@@ -30,8 +35,8 @@ module.exports = {
                   .status(400)
                   .json({ confirmation: false, message: err });
               } else {
-                // return res.redirect('/');
-                next();
+                return res.redirect('/');
+                // next();
               }
             });
           })
